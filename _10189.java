@@ -30,6 +30,9 @@ class Grid {
   }
 
   public boolean isBomb(int row, int col) {
+    if (row < 0 || row >= getRows() || col < 0 || col >= getCols()) {
+      return false; 
+    }
     return this.grid[row][col] == '*';
   }
 
@@ -67,11 +70,6 @@ class Solver {
     {
         int dX = x + X[dir];
         int dY = y + Y[dir];
-
-        if (dX < 0 || dX >= _grid.getRows() || dY < 0 || dY >= _grid.getCols())
-        {
-            continue;
-        }
 
         if (_grid.isBomb(dX, dY))
         {
